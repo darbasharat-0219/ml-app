@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GPA Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo">🎓</div>
+                <div class="logo-glow"></div>
+            </div>
+
+            <h1 class="gradient-text">GPA <span>Predictor</span></h1>
+            <p class="typewriter">Predict student performance using ML 🚀</p>
+        </div>
+
+        <!-- FORM -->
+        <form action="/predict" method="POST">
+
+            <div class="input-grid">
+
+                <!-- Study Time -->
+                <div class="input-card">
+                    <label>Study Time Weekly</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📚</span>
+                        <input type="number" name="StudyTimeWeekly" min="0" max="50" required>
+                    </div>
+                </div>
+
+                <!-- Absences -->
+                <div class="input-card">
+                    <label>Absences</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🚫</span>
+                        <input type="number" name="Absences" min="0" max="100" required>
+                    </div>
+                </div>
+
+                <!-- Tutoring -->
+                <div class="input-card">
+                    <label>Tutoring (0/1)</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👨‍🏫</span>
+                        <input type="number" name="Tutoring" min="0" max="1" required>
+                    </div>
+                </div>
+
+                <!-- Parental Support -->
+                <div class="input-card">
+                    <label>Parental Support (0–5)</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">👨‍👩‍👧</span>
+                        <input type="number" name="ParentalSupport" min="0" max="5" required>
+                    </div>
+                </div>
+
+                <!-- Activities -->
+                <div class="activity-grid">
+
+                    <div class="activity-card">
+                        <input type="hidden" name="Sports" value="0">
+                        <label>
+                            <input type="checkbox" name="Sports" value="1">
+                            🏀 Sports
+                        </label>
+                    </div>
+
+                    <div class="activity-card">
+                        <input type="hidden" name="Music" value="0">
+                        <label>
+                            <input type="checkbox" name="Music" value="1">
+                            🎵 Music
+                        </label>
+                    </div>
+
+                    <div class="activity-card">
+                        <input type="hidden" name="Extracurricular" value="0">
+                        <label>
+                            <input type="checkbox" name="Extracurricular" value="1">
+                            🎯 Activities
+                        </label>
+                    </div>
+
+                </div>
+
+                <!-- Grade -->
+                <div class="input-card">
+                    <label>Grade Class</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🎓</span>
+                        <input type="number" name="GradeClass" min="0" max="4" required>
+                    </div>
+                </div>
+
+                <!-- Reading Habit -->
+                <div class="input-card">
+                    <label>Reading Habit (0–5)</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📖</span>
+                        <input type="number" name="ReadingHabit" min="0" max="5" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+            <button class="magic-button">
+                <span class="button-content">🚀 Predict GPA</span>
+                <div class="button-glow"></div>
+            </button>
+
+        </form>
+
+        <!-- RESULT -->
+        {% if result %}
+        <div class="result">
+            🎯 Predicted GPA: {{ result }}
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
